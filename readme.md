@@ -26,8 +26,8 @@ The `generate-all-valid-public-ip-addresses.sh` script looks like this:
 
 ```shell
 for i in $(seq 1 191); do \
-    docker run -e IPRANGE='$i.0.0.0/8' geo-ip >> geo-ip.json ; \
-    sleep(1); \ 
+    docker run -e IPRANGE="$i.0.0.0/8" geo-ip; \
+    sleep 1; \ 
 done
 ```
 
