@@ -15,7 +15,14 @@ docker run -e IPRANGE='0.0.0.0/0'   geo-ip > geo-ip.json ## ALL IPs saved to JSO
 docker run geo-ip 
 ```
 
-A little faster option for scanning all valid public addresses:
+A little faster option for scanning all valid public addresses.
+Just run the included helper script to generate all known valid public IP addresses:
+
+```shell
+./generate-all-valid-public-ip-addresses.sh
+```
+
+The `generate-all-valid-public-ip-addresses.sh` script looks like this:
 
 ```shell
 for i in $(seq 1 191); do \
