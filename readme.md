@@ -16,7 +16,11 @@ This prints less than *4,228,250,625* JSON lines to STDOUT.
 Here is an example of one of the lines:
 
 ```json
-{"city": "Palo Alto", "ip": "0.0.0.0", "longitude": -122.1274, "continent": "North America", "continent_code": "NA", "state": "California", "country": "United States", "latitude": 37.418, "iso_code": "US", "state_code": "CA", "aso": "PubNub", "asn": "11404", "zip_code": "94107"}
+{"city": "Palo Alto", "ip": "0.0.0.0", "longitude": -122.1274,
+ "continent": "North America", "continent_code": "NA",
+ "state": "California", "country": "United States", "latitude": 37.418,
+ "iso_code": "US", "state_code": "CA", "aso": "PubNub",
+ "asn": "11404", "zip_code": "94107"}
 ```
 
 ## Private and Reserved IP Range
