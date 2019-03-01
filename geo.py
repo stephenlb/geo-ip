@@ -9,11 +9,11 @@ import pprint
 ## Max Mind
 ## -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 asn = geoip2.database.Reader(
-    filename='./GeoLite2-ASN.mmdb'
+    './GeoLite2-ASN.mmdb'
 ,   mode=maxminddb.const.MODE_MEMORY
 )
 city = geoip2.database.Reader(
-    filename='./GeoLite2-City.mmdb'
+    './GeoLite2-City.mmdb'
 ,   mode=maxminddb.const.MODE_MEMORY
 )
 
@@ -37,10 +37,10 @@ def lookup(ip):
     ## Location
     if ip_city:
         ## Country Database
-        results['iso_code']  = str(ip_city.country.iso_code or 'Unknown')
-        results['con_code']  = str(ip_city.continent.code or 'Unknown')
-        results['country']   = ip_city.country.name or 'Unknown'
-        results['continent'] = ip_city.continent.name or 'Unknown'
+        results['iso_code']       = str(ip_city.country.iso_code or 'Unknown')
+        results['continent_code'] = str(ip_city.continent.code or 'Unknown')
+        results['country']        = ip_city.country.name or 'Unknown'
+        results['continent']      = ip_city.continent.name or 'Unknown'
 
         ## City Database
         results['zip_code']   = str(ip_city.postal.code or 'Unknown')
