@@ -1,4 +1,4 @@
-# PubNub Geo IP Generator
+# Geo IP Generator
 
 Generates a JSON dump of IP Addresses and associated Geo information.
 Note that the valid public IP Address range is
