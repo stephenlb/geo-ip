@@ -1,15 +1,27 @@
 # PubNub Geo IP Generator
 
 Generates a JSON dump of IP Addresses and associated Geo information.
+Note that the valid public IP Address range is
+from `'1.0.0.0/8'` to `'191.0.0.0/8'` excluding the reserved
+Private IP Address ranges shown lower down in this readme.
 
 ```shell
 docker build -t geo-ip .
 docker run -e IPRANGE='54.0.0.0/30' geo-ip               ## a few IPs
 docker run -e IPRANGE='54.0.0.0/26' geo-ip               ## a few more IPs
 docker run -e IPRANGE='54.0.0.0/16' geo-ip               ## a lot more IPs
-docker run -e IPRANGE='0.0.0.0/0'   geo-ip               ## ALL IPs
+docker run -e IPRANGE='0.0.0.0/0'   geo-ip               ## ALL IPs ( slooooowwwwww )
 docker run -e IPRANGE='0.0.0.0/0'   geo-ip > geo-ip.json ## ALL IPs saved to JSON File
 docker run geo-ip 
+```
+
+A little faster option for scanning all valid public addresses:
+
+```shell
+for i in $(seq 1 191); do \
+    docker run -e IPRANGE='$i.0.0.0/8' geo-ip >> geo-ip.json ; \
+    sleep(1); \ 
+done
 ```
 
 This prints less than *4,228,250,625* JSON lines to STDOUT.

@@ -5,8 +5,8 @@
 ## -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 import os
 import geo
-import iptools
 import json
+import iptools
 
 ## Get IP Range
 IPRANGE = os.environ.get( 'IPRANGE', '52.0.0.0/30' )
@@ -19,8 +19,9 @@ private = iptools.IpRangeList(
     '203.0.113.0/24', '224.0.0.0/4',    '240.0.0.0/4',   '255.255.255.255/32'
 )
 
-## Find Valid Public IPs
-for ip in iptools.IpRange(IPRANGE):
-    if ip not in private:
-        print json.dumps(geo.lookup(ip))
-
+## Print Found Valid Public IPs
+ips = iptools.IpRange(IPRANGE).__iter__()
+while True:
+    try: ip = ips.next()
+    except: break
+    if ip not in private: print json.dumps(geo.lookup(ip))
