@@ -12,13 +12,15 @@ RUN pip install --upgrade pip
 RUN pip install geoip2 iptools
 
 ## Download MaxMind DB
-RUN curl -O http://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN.tar.gz
+## Get updated MaxMind DB from https://dev.maxmind.com/geoip/geoip2/geolite2/
+COPY maxmind/GeoLite2-ASN.tar.gz GeoLite2-ASN.tar.gz
 RUN tar xvfz GeoLite2-ASN.tar.gz
 RUN rm GeoLite2-ASN.tar.gz
 RUN mv GeoLite2-ASN_*/GeoLite2-ASN.mmdb .
 RUN rm -rf GeoLite2-ASN_*
 
-RUN curl -O http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
+## Get updated MaxMind DB from https://dev.maxmind.com/geoip/geoip2/geolite2/
+COPY maxmind/GeoLite2-City.tar.gz GeoLite2-City.tar.gz
 RUN tar xvfz GeoLite2-City.tar.gz
 RUN rm GeoLite2-City.tar.gz
 RUN mv GeoLite2-City_*/GeoLite2-City.mmdb .
